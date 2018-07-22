@@ -12,7 +12,10 @@ gem 'bcrypt'
 gem 'shotgun'
 gem 'sinatra'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-gem 'sqlite3'
 gem 'thin'
 gem 'tux'
 gem 'capybara'
+
+group :development, :test do
+    gem 'sqlite3'
+end
