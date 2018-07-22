@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
     end
 
     post '/teams' do
-        @team = Team.create(:name => params[:teams][:name], :size => params[:teams][:size])
+        @team = Team.create(:name => params[:teams][:name], :size => params[:teams][:size], :user_id => session[:user_id])
 
         redirect to "/teams/#{@team.id}"
     end

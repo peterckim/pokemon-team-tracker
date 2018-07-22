@@ -20,6 +20,12 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/users/logout' do #logout action
+        session.clear
+
+        redirect to "/"
+    end
+
     get '/users/failure' do
         erb :'user/failure'
     end
@@ -37,13 +43,12 @@ class UsersController < ApplicationController
 
     get '/users/:id' do
         @user = User.find(params[:id])
-
+        @team = Team.find_by(:user_id => params[:id])
         erb :'user/show'
     end
 
     get '/users/:id/edit' do #load edit form
         @user = User.find(params[:id])
-
         erb :'user/edit'
     end
 
@@ -56,4 +61,6 @@ class UsersController < ApplicationController
 
         redirect to "/users/#{user.id}"
     end
+
+
 end
