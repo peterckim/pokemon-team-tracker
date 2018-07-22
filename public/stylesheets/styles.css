@@ -18,7 +18,12 @@
 
 h1 {
     color: #3B4CCA;
-    font-size: 40px;
+    font-family: 'Lora', serif;
+    font-size: 30px;
+}
+
+.failure-text {
+    color: red;
 }
 
 a {

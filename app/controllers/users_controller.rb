@@ -43,7 +43,8 @@ class UsersController < ApplicationController
 
     get '/users/:id' do
         @user = User.find(params[:id])
-        @team = Team.find_by(:user_id => params[:id])
+        @team = Team.where(:user_id => params[:id])
+
         erb :'user/show'
     end
 
@@ -60,6 +61,14 @@ class UsersController < ApplicationController
         @user.save
 
         redirect to "/users/#{user.id}"
+    end
+
+    delete '/users/:id/delete' do #delete action
+        @user = User.find(params[:id])
+        @user.delete
+        session.clear
+        
+        redirect to "/"
     end
 
 

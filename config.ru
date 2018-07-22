@@ -13,3 +13,13 @@ end
 
 use Rack::MethodOverride
 run ApplicationController
+
+use Rack::MethodOverride
+use UsersController
+
+use Rack::MethodOverride
+use TeamsController
+
+use Rack::MethodOverride
+use PokemonsController
+

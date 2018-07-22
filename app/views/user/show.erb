@@ -1,9 +1,15 @@
 <h1>Hello <%=@user.name%></h1>
 
-<% if @team != nil %>
-<a href="/teams/<%=@team.id%>"><h2><%=@team.name%></h2></a>
+<% @team.each do |t| %>
+<a href="/teams/<%=t.id%>"><h2><%=t.name%></h2></a>
 <% end %>
 
 <a href="/teams/new"><p>Add Team</p></a>
 
 <a href="/users/logout"><p>Log Out</p></a>
+
+<form method="POST" action="/users/<%=@user.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+
+  <input type="submit" value="Delete">
+<form>

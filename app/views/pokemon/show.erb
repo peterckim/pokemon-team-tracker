@@ -1,5 +1,5 @@
 <h1><%=@pokemon.name%></h1>
-<h3>Type: <%=@pokemon.type%></h3>
+<h3>Type: <%=@pokemon.element%></h3>
 <h3>Gender: <%=@pokemon.gender%></h3>
 <h3>Nature: <%=@pokemon.nature%></h3>
 <h3>Health: <%=@pokemon.health%></h3>
@@ -7,3 +7,10 @@
 <h3>Defense: <%=@pokemon.defense%></h3>
 <h3>Special Attack: <%=@pokemon.special_attack%></h3>
 <h3>Special Defense: <%=@pokemon.special_defense%></h3>
+<h3>Speed: <%=@pokemon.speed%></h3>
+
+<form method="POST" action="/pokemons/<%=@pokemon.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+
+  <input type="submit" value="Delete">
+<form>

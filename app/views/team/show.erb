@@ -1,2 +1,12 @@
 <h1>Team <%=@team.name%></h1>
+<% @pokemon.each do |p| %>
+    <a href="/pokemons/<%= p.id %>"><h2><%= p.name %></h2></a>
+<% end %>
 <a href="/pokemons/new"><p>Add Pokemon</p></a>
+
+
+<form method="POST" action="/teams/<%=@team.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+
+  <input type="submit" value="Delete">
+<form>
