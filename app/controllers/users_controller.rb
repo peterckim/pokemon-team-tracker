@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
 
     get '/users/login' do # load login form
-
+        session[:failure] = false
         erb :'user/login'
     end
 
@@ -16,7 +16,8 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect to "/users/#{session[:user_id]}"
         else
-            redirect to "/users/failure"
+            session[:failure] = true
+            redirect to "/"
         end
     end
 
@@ -26,12 +27,8 @@ class UsersController < ApplicationController
         redirect to "/"
     end
 
-    get '/users/failure' do
-        erb :'user/failure'
-    end
-
     get '/users/new' do
-
+        session[:failure] = false
         erb :'user/new'
     end
 
@@ -70,6 +67,4 @@ class UsersController < ApplicationController
         
         redirect to "/"
     end
-
-
 end

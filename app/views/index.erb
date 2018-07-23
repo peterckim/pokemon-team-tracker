@@ -5,4 +5,7 @@
         <a href="/users/new"><p>Sign Up</p></a>
         <a href="/users/login"><p>Log In</p></a>
     </div>
+    <% if session[:failure]%>
+        <h1 class="failure-text">Wrong Username or Password</h1>
+    <% end %>
 </div>
