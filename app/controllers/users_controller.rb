@@ -13,7 +13,8 @@ class UsersController < ApplicationController
         @user = User.find_by(:username => params[:users][:username])
         if @user && @user.authenticate(params[:users][:password])
             session[:user_id] = @user.id
-            redirect to "/users/#{session[:user_id]}"
+            session[:user_slug] = @user.slug
+            redirect to "/users/#{session[:user_slug]}"
         else
             redirect to "/"
         end
@@ -29,40 +30,43 @@ class UsersController < ApplicationController
         erb :'user/new'
     end
 
-    post '/users' do
+    post '/users' do # handle signup
+        # if username already exists
         if User.find_by(:username => params[:users][:username])
             redirect to "/"
+        # if username doesnt already exist, create it
         else
             @user = User.create(params[:users])
-            redirect to "/users/#{@user.id}"
+            session[:user_id] = @user.id
+            session[:user_slug] = @user.slug
+            redirect to "/users/#{@user.slug}"
         end
     end
 
-    get '/users/:id' do
-        @user = User.find(params[:id])
-        @team = Team.where(:user_id => params[:id])
+    # use slugs
+    get '/users/:slug' do
+        @user = User.find_by_slug(params[:slug])
+        @team = Team.where(:user_id => @user.id)
 
         erb :'user/show'
     end
 
-    get '/users/:id/edit' do #load edit form
-        @user = User.find(params[:id])
+    get '/users/:slug/edit' do #load edit form
+        @user = User.find_by_slug(params[:slug])
         erb :'user/edit'
     end
 
-    patch '/users/:id' do #edit action
-        @user = User.find(params[:id])
-        @user.username = params[:users][:username]
-        @user.name = params[:users][:name]
-        @user.password = params[:users][:password]
+    patch '/users/:slug' do #edit action
+        @user = User.find_by_slug(params[:slug])
+        @user.update(params[:users])
         @user.save
 
-        redirect to "/users/#{user.id}"
+        redirect to "/users/#{user.slug}"
     end
 
-    delete '/users/:id/delete' do #delete action
-        @user = User.find(params[:id])
-        @user.delete
+    delete '/users/:slug/delete' do #delete action
+        @user = User.find_by_slug(params[:slug])
+        @user.destroy
         session.clear
         
         redirect to "/"

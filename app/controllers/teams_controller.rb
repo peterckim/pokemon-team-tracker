@@ -7,20 +7,22 @@ class TeamsController < ApplicationController
     post '/teams' do
         @team = Team.create(:name => params[:teams][:name], :size => params[:teams][:size], :user_id => session[:user_id])
         
-        redirect to "/teams/#{@team.id}"
+        redirect to "/teams/#{@team.slug}"
     end
 
-    get '/teams/:id' do
-        @team = Team.find(params[:id])
-        session[:team_id] = params[:id]
-        @pokemon = Pokemon.where(:team_id => params[:id])
+    get '/teams/:slug' do
+        @team = Team.find_by_slug(params[:slug])
+        session[:team_slug] = params[:slug]
+        session[:team_id] = @team.id
+        @pokemon = Pokemon.where(:team_id => session[:team_id])
+
         erb :'team/show'
     end
 
-    delete '/teams/:id/delete' do #delete action
-        @team = Team.find(params[:id])
-        @team.delete
+    delete '/teams/:slug/delete' do #delete action
+        @team = Team.find_by_slug(params[:slug])
+        @team.destroy
         
-        redirect to "/users/#{session[:user_id]}"
+        redirect to "/users/#{session[:user_slug]}"
     end
 end

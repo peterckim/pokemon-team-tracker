@@ -1,14 +1,16 @@
 <h1>Hello <%=@user.name%></h1>
 
 <% @team.each do |t| %>
-<a href="/teams/<%=t.id%>"><h2><%=t.name%></h2></a>
+  <a href="/teams/<%=t.slug%>"><h2><%=t.name%></h2></a>
 <% end %>
 
 <a href="/teams/new"><p>Add Team</p></a>
 
 <a href="/users/logout"><p>Log Out</p></a>
 
-<form method="POST" action="/users/<%=@user.id%>/delete">
+
+
+<form method="POST" action="/users/<%=@user.slug%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
 
   <input type="submit" value="Delete">

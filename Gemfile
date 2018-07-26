@@ -15,7 +15,4 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'thin'
 gem 'tux'
 gem 'capybara'
-
-group :development, :test do
-    gem 'sqlite3'
-end
+gem 'sqlite3'

@@ -5,21 +5,23 @@ class PokemonsController < ApplicationController
 
     post '/pokemons' do
         # Currently returning an error!
-        @pokemon = Pokemon.create(:name => params[:pokemons][:name], :element => params[:pokemons][:element], :gender => params[:pokemons][:gender], :nature => params[:pokemons][:nature], :health => params[:pokemons][:health], :attack => params[:pokemons][:attack], :defense => params[:pokemons][:defense], :special_attack => params[:pokemons][:special_attack], :special_defense => params[:pokemons][:special_defense], :speed => params[:pokemons][:speed], :team_id => session[:team_id])
+        @pokemon = Pokemon.create(params[:pokemons])
+        @pokemon.team_id = session[:team_id]
+        @pokemon.save
 
-        redirect to "/pokemons/#{@pokemon.id}"
+        redirect to "/pokemons/#{@pokemon.slug}"
     end
 
-    get '/pokemons/:id' do
-        @pokemon = Pokemon.find(params[:id])
+    get '/pokemons/:slug' do
+        @pokemon = Pokemon.find_by_slug(params[:slug])
 
         erb :'pokemon/show'
     end
 
-    delete '/pokemons/:id/delete' do #delete action
-        @pokemon = Pokemon.find(params[:id])
-        @pokemon.delete
+    delete '/pokemons/:slug/delete' do #delete action
+        @pokemon = Pokemon.find_by_slug(params[:slug])
+        @pokemon.destroy
         
-        redirect to "/teams/#{session[:team_id]}"
+        redirect to "/teams/#{session[:team_slug]}"
     end
 end
