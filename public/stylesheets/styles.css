@@ -1,39 +1,111 @@
-.background-image {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    height: 527px;
-    width: 550px;
-    background-image: url("../images/charizard.png");
-    background-repeat: no-repeat;
-}
+@media screen {
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-.text {
-    width: 50%
-}
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
 
-.clickables {
-    margin-top: 70px;
-}
+    .background-image {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: url("../images/pokemon-background.jpg") no-repeat center center;
+        background-size: cover;
+        opacity: 0.6;
+    }
 
-h1 {
-    color: #3B4CCA;
-    font-family: 'Lora', serif;
-    font-size: 30px;
-}
+    .wrapper {
+        background: rgba(255,255,255,0.75);
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+        box-shadow: 0 0 10px rgba(0,0,0,.3);
+        margin: 16px auto;
+        max-width: 960px;
+        padding: 2.25%; /* 18px / 800px */
+        width: 85%;
+    }
 
-.failure-text {
-    color: red;
-}
+    .title {
+        color: #3B4CCA;
+        font-family: 'Lora', serif;
+        font-size: 30px;
+    }
 
-a {
-    text-decoration: none;
-    color: #FF0000;
-    float: left;
-    margin-right: 10px;
-}
+    .sub-title {
+        color: #3B4CCA; /* Change Color */
+        font-family: 'Lora', serif;
+        font-size: 20px;
+    }
 
-a:hover {
-    background-color: #FFDE00;
-    border-radius: 8px;
+    .align-center {
+        overflow:auto;
+        text-align: center;
+    }
+
+    .align-left {
+        overflow:auto;
+        text-align: left;
+    }
+
+    .pokemon-align {
+        text-align: left;
+        padding-left: 50px;
+    }
+
+    .team-title {
+        text-decoration: none;
+        color: black;
+    }
+
+    .top-medium-spacing {
+        padding-top: 20px;
+    }
+
+    .top-small-spacing {
+        padding-top: 10px;
+    }
+
+    .top-xsmall-spacing {
+        padding-top: 5px;
+    }
+
+    .bottom-medium-spacing {
+        padding-bottom: 20px;
+    }
+
+    .button {
+        width: 236px;
+        padding: 7px;
+    }
+
+    .failure-text {
+        color: red;
+    }
+
+    .line-break {
+        border-top: 2px solid #ccc;
+    }
+
+    .input-text {
+        font-size: 1.5em;
+        padding: 5px;
+        margin: 5px auto;
+    }
+
+    .team-title:first-child {
+        padding-top: 20px;
+    }
+
+    .left-spacing {
+        margin-left: 10px;
+    }
+
 }

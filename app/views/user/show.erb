@@ -1,21 +1,30 @@
-<h1>Hello <%=@user.name%></h1>
+<h2 class="sub-title top-medium-spacing bottom-medium-spacing">Hello <%=@user.name%></h2>
 
-<% @team.each do |t| %>
-  <a href="/teams/<%=t.slug%>"><h2><%=t.name%></h2></a>
-<% end %>
-
-<a href="/teams/new"><p>Add Team</p></a>
-
-<a href="/users/logout"><p>Log Out</p></a>
-
-
-<a href="/users/<%=@user.slug%>/edit"><p>Edit</p></a>
-
-
+<div class="line-break">
+  <% @team.each do |t| %>
+    <div class="top-medium-spacing"></div>
+    <a class="team-title" href="/teams/<%=t.slug%>"><h2 class="align-left"><%=t.name%></h2></a>
+    <div class="top-small-spacing">
+    <% t.pokemons.each do |p| %>
+      <div class="top-xsmall-spacing">
+      <a class="team-title" href="/pokemons/<%=p.slug%>"><h3 class="pokemon-align"><%=p.name%></h3></a>
+    <% end %>
+  <% end %>
 
 
-<form method="POST" action="/users/<%=@user.slug%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
 
-  <input type="submit" value="Delete">
-<form>
+  <a href="/teams/new"><button type="button" name="button" class="button"><h3>Add Team</h3></button></a>
+
+  <a href="/users/logout"><button type="button" name="button" class="button"><h3>Log Out</h3></button></a>
+
+  <a href="/users/<%=@user.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
+
+
+
+
+  <form method="POST" action="/users/<%=@user.slug%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+
+    <input type="submit" value="Delete">
+  <form>
+</div>

@@ -1,18 +1,23 @@
-<h1><%=@pokemon.name%></h1>
-<h3>Type: <%=@pokemon.element%></h3>
-<h3>Gender: <%=@pokemon.gender%></h3>
-<h3>Nature: <%=@pokemon.nature%></h3>
-<h3>Health: <%=@pokemon.health%></h3>
-<h3>Attack: <%=@pokemon.attack%></h3>
-<h3>Defense: <%=@pokemon.defense%></h3>
-<h3>Special Attack: <%=@pokemon.special_attack%></h3>
-<h3>Special Defense: <%=@pokemon.special_defense%></h3>
-<h3>Speed: <%=@pokemon.speed%></h3>
+<h2 class="sub-title top-medium-spacing bottom-medium-spacing"><%=@pokemon.name%></h2>
+<img src="/images/<%=@pokemon.assign_image%>" /> <!-- Move assign_image to controller -->
+<div class="line-break">
+  <div class="top-medium-spacing">
+    <h3>Type: <%=@pokemon.element%></h3>
+    <h3 class="top-small-spacing">Gender: <%=@pokemon.gender%></h3>
+    <h3 class="top-small-spacing">Nature: <%=@pokemon.nature%></h3>
+    <h3 class="top-small-spacing">Health: <%=@pokemon.health%></h3>
+    <h3 class="top-small-spacing">Attack: <%=@pokemon.attack%></h3>
+    <h3 class="top-small-spacing">Defense: <%=@pokemon.defense%></h3>
+    <h3 class="top-small-spacing">Special Attack: <%=@pokemon.special_attack%></h3>
+    <h3 class="top-small-spacing">Special Defense: <%=@pokemon.special_defense%></h3>
+    <h3 class="top-small-spacing">Speed: <%=@pokemon.speed%></h3>
 
-<a href="/pokemons/<%=@pokemon.slug%>/edit"><p>Edit</p></a>
+    <a href="/pokemons/<%=@pokemon.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
 
-<form method="POST" action="/pokemons/<%=@pokemon.slug%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
+    <form method="POST" action="/pokemons/<%=@pokemon.slug%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="delete">
 
-  <input type="submit" value="Delete">
-<form>
+      <input type="submit" value="Delete">
+    <form>
+  </div>
+</div>

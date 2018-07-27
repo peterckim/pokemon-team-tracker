@@ -4,9 +4,9 @@ class PokemonsController < ApplicationController
     end
 
     post '/pokemons' do
-        # Currently returning an error!
         @pokemon = Pokemon.create(params[:pokemons])
         @pokemon.team_id = session[:team_id]
+        @pokemon.assign_image
         @pokemon.save
 
         redirect to "/pokemons/#{@pokemon.slug}"
@@ -27,6 +27,7 @@ class PokemonsController < ApplicationController
     patch '/pokemons/:slug' do
         @pokemon = Pokemon.find_by_slug(params[:slug])
         @pokemon.update(params[:pokemons])
+        @pokemon.assign_image
         @pokemon.save
 
         redirect to "/pokemons/#{@pokemon.slug}"

@@ -1,13 +1,19 @@
-<h1>Team <%=@team.name%></h1>
-<% @pokemon.each do |p| %>
-    <a href="/pokemons/<%= p.id %>"><h2><%= p.name %></h2></a>
-<% end %>
-<a href="/pokemons/new"><p>Add Pokemon</p></a>
+<h2 class="sub-title top-medium-spacing bottom-medium-spacing">Team <%=@team.name%></h2>
 
-<a href="/teams/<%=@team.slug%>/edit"><p>Edit</p></a>
+<div class="line-break">
+  <div class="top-medium-spacing">
+    <% @pokemon.each do |p| %>
+        <a href="/pokemons/<%= p.slug %>"><h2><%= p.name %></h2></a>
+    <% end %>
 
-<form method="POST" action="/teams/<%=@team.slug%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
+    <a href="/pokemons/new"><button type="button" name="button" class="button"><h3>Add Pokemon</h3></button></a>
 
-  <input type="submit" value="Delete">
-<form>
+    <a href="/teams/<%=@team.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
+
+    <form method="POST" action="/teams/<%=@team.slug%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+
+      <input type="submit" value="Delete">
+    <form>
+  </div>
+</div>

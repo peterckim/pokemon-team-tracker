@@ -1,44 +1,58 @@
-<h1>New Pokemon</h1>
-<form action="/pokemons" method="POST">
-    <label for="name">Name:</label>
-    <br>
-    <input type="text" name="pokemons[name]" id="name" />
-    <br>
-    <label for="element">Element:</label>
-    <br>
-    <input type="text" name="pokemons[element]" id="element" />
-    <br>
-    <label for="gender">Gender:</label>
-    <br>
-    <input type="text" name="pokemons[gender]" id="gender" />
-    <br>
-    <label for="nature">Nature:</label>
-    <br>
-    <input type="text" name="pokemons[nature]" id="nature" />
-    <br>
-    <label for="health">Health:</label>
-    <br>
-    <input type="number" min="1" max="31" step="1" name="pokemons[health]" id="health" />
-    <br>
-    <label for="attack">Attack:</label>
-    <br>
-    <input type="number" min="1" max="31" step="1" name="pokemons[attack]" id="attack" />
-    <br>
-    <label for="defense">Defense:</label>
-    <br>
-    <input type="number" min="1" max="31" step="1" name="pokemons[defense]" id="defense" />
-    <br>
-    <label for="special_attack">Special Attack:</label>
-    <br>
-    <input type="number" min="1" max="31" step="1" name="pokemons[special_attack]" id="special_attack" />
-    <br>
-    <label for="special_defense">Special Defense:</label>
-    <br>
-    <input type="number" min="1" max="31" step="1" name="pokemons[special_defense]" id="special_defense" />
-    <br>
-    <label for="speed">Speed:</label>
-    <br>
-    <input type="number" min="1" max="31" step="1" name="pokemons[speed]" id="speed" />
-    <br>
-    <input type="submit" value="Create Pokemon" />
-</form>
+<h2 class="sub-title top-medium-spacing bottom-medium-spacing">New Pokemon</h2>
+
+<div class="line-break">
+    <div class="top-medium-spacing">
+        <form action="/pokemons" method="POST">
+            <label for="name">Name:</label>
+            <br>
+            <input class="input-text" type="text" name="pokemons[name]" id="name" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="element">Element:</label>
+            <br>
+            <input class="input-text" type="text" name="pokemons[element]" id="element" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="gender">Gender:</label>
+            <br>
+            <input class="input-text" type="text" name="pokemons[gender]" id="gender" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="nature">Nature:</label>
+            <br>
+            <input class="input-text" type="text" name="pokemons[nature]" id="nature" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="health">Health:</label>
+            <br>
+            <input class="input-text" type="number" min="1" max="31" step="1" name="pokemons[health]" id="health" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="attack">Attack:</label>
+            <br>
+            <input class="input-text" type="number" min="1" max="31" step="1" name="pokemons[attack]" id="attack" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="defense">Defense:</label>
+            <br>
+            <input class="input-text" type="number" min="1" max="31" step="1" name="pokemons[defense]" id="defense" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="special_attack">Special Attack:</label>
+            <br>
+            <input class="input-text" type="number" min="1" max="31" step="1" name="pokemons[special_attack]" id="special_attack" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="special_defense">Special Defense:</label>
+            <br>
+            <input class="input-text" type="number" min="1" max="31" step="1" name="pokemons[special_defense]" id="special_defense" />
+            <br>
+            <div class="top-small-spacing"></div>
+            <label for="speed">Speed:</label>
+            <br>
+            <input class="input-text" type="number" min="1" max="31" step="1" name="pokemons[speed]" id="speed" />
+            <br>
+            <input class="input-text" type="submit" value="Create Pokemon" />
+        </form>
+    </div>
+</div

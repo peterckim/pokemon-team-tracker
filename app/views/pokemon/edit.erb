@@ -1,14 +1,28 @@
-<form method="post" action="/pokemons/<%=@pokemon.slug%>">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  Name<input type="text" value="<%=@pokemon.name%>" name="pokemons[name]"><br>
-  Type<input type="text" value="<%=@pokemon.element%>" name="pokemons[element]"><br>
-  Gender<input type="text" value="<%=@pokemon.gender%>" name="pokemons[gender]"><br>
-  Nature<input type="text" value="<%=@pokemon.nature%>" name="pokemons[nature]"><br>
-  Health<input type="text" value="<%=@pokemon.health%>" name="pokemons[health]"><br>
-  Attack<input type="text" value="<%=@pokemon.attack%>" name="pokemons[attack]"><br>
-  Defense<input type="text" value="<%=@pokemon.defense%>" name="pokemons[defense]"><br>
-  Special Attack<input type="text" value="<%=@pokemon.special_attack%>" name="pokemons[special_attack]"><br>
-  Special Defense<input type="text" value="<%=@pokemon.special_defense%>" name="pokemons[special_defense]"><br>
-  Speed<input type="text" value="<%=@pokemon.speed%>" name="pokemons[speed]"><br>
-  <input type="submit" value="submit">
-</form>
+<h2 class="sub-title top-medium-spacing bottom-medium-spacing">Edit <%=@pokemon.name%></h2>
+<div class="line-break">
+  <div class="top-medium-spacing">
+    <form method="post" action="/pokemons/<%=@pokemon.slug%>">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      Name<br><input class="input-text" type="text" value="<%=@pokemon.name%>" name="pokemons[name]"><br>
+      <div class="top-small-spacing"></div>
+      Type<br><input class="input-text" type="text" value="<%=@pokemon.element%>" name="pokemons[element]"><br>
+      <div class="top-small-spacing"></div>
+      Gender<br><input class="input-text" type="text" value="<%=@pokemon.gender%>" name="pokemons[gender]"><br>
+      <div class="top-small-spacing"></div>
+      Nature<br><input class="input-text" type="text" value="<%=@pokemon.nature%>" name="pokemons[nature]"><br>
+      <div class="top-small-spacing"></div>
+      Health<br><input class="input-text" type="text" value="<%=@pokemon.health%>" name="pokemons[health]"><br>
+      <div class="top-small-spacing"></div>
+      Attack<br><input class="input-text" type="text" value="<%=@pokemon.attack%>" name="pokemons[attack]"><br>
+      <div class="top-small-spacing"></div>
+      Defense<br><input class="input-text" type="text" value="<%=@pokemon.defense%>" name="pokemons[defense]"><br>
+      <div class="top-small-spacing"></div>
+      Special Attack<br><input class="input-text" type="text" value="<%=@pokemon.special_attack%>" name="pokemons[special_attack]"><br>
+      <div class="top-small-spacing"></div>
+      Special Defense<br><input class="input-text" type="text" value="<%=@pokemon.special_defense%>" name="pokemons[special_defense]"><br>
+      <div class="top-small-spacing"></div>
+      Speed<br><input class="input-text" type="text" value="<%=@pokemon.speed%>" name="pokemons[speed]"><br>
+      <input class="input-text" type="submit" value="Submit">
+    </form>
+  </div>
+</div

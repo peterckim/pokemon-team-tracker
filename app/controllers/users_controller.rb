@@ -48,6 +48,8 @@ class UsersController < ApplicationController
         @user = User.find_by_slug(params[:slug])
         @team = Team.where(:user_id => @user.id)
 
+        # binding.pry
+
         erb :'user/show'
     end
 
