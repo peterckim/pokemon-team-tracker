@@ -4,6 +4,7 @@
 <% end %>
 <a href="/pokemons/new"><p>Add Pokemon</p></a>
 
+<a href="/teams/<%=@team.slug%>/edit"><p>Edit</p></a>
 
 <form method="POST" action="/teams/<%=@team.slug%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">

@@ -9,6 +9,10 @@
 <a href="/users/logout"><p>Log Out</p></a>
 
 
+<a href="/users/<%=@user.slug%>/edit"><p>Edit</p></a>
+
+
+
 
 <form method="POST" action="/users/<%=@user.slug%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">

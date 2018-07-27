@@ -19,6 +19,20 @@ class TeamsController < ApplicationController
         erb :'team/show'
     end
 
+    get '/teams/:slug/edit' do
+        @team = Team.find_by_slug(params[:slug])
+
+        erb :'team/edit'
+    end
+
+    patch '/teams/:slug' do
+        @team = Team.find_by_slug(params[:slug])
+        @team.update(params[:teams])
+        @team.save
+
+        redirect to "/teams/#{@team.slug}"
+    end
+
     delete '/teams/:slug/delete' do #delete action
         @team = Team.find_by_slug(params[:slug])
         @team.destroy

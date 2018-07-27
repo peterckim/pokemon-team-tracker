@@ -9,6 +9,8 @@
 <h3>Special Defense: <%=@pokemon.special_defense%></h3>
 <h3>Speed: <%=@pokemon.speed%></h3>
 
+<a href="/pokemons/<%=@pokemon.slug%>/edit"><p>Edit</p></a>
+
 <form method="POST" action="/pokemons/<%=@pokemon.slug%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
 

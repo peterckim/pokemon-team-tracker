@@ -1,0 +1,6 @@
+<form method="post" action="/teams/<%=@team.slug%>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  Name<input type="text" value="<%=@team.name%>" name="teams[name]"><br>
+  Size<input type="text" value="<%=@team.size%>" name="teams[size]"><br>
+  <input type="submit" value="submit">
+</form>

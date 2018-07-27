@@ -18,6 +18,20 @@ class PokemonsController < ApplicationController
         erb :'pokemon/show'
     end
 
+    get '/pokemons/:slug/edit' do
+        @pokemon = Pokemon.find_by_slug(params[:slug])
+
+        erb :'pokemon/edit'
+    end
+
+    patch '/pokemons/:slug' do
+        @pokemon = Pokemon.find_by_slug(params[:slug])
+        @pokemon.update(params[:pokemons])
+        @pokemon.save
+
+        redirect to "/pokemons/#{@pokemon.slug}"
+    end
+
     delete '/pokemons/:slug/delete' do #delete action
         @pokemon = Pokemon.find_by_slug(params[:slug])
         @pokemon.destroy

@@ -53,6 +53,7 @@ class UsersController < ApplicationController
 
     get '/users/:slug/edit' do #load edit form
         @user = User.find_by_slug(params[:slug])
+        
         erb :'user/edit'
     end
 
@@ -60,8 +61,8 @@ class UsersController < ApplicationController
         @user = User.find_by_slug(params[:slug])
         @user.update(params[:users])
         @user.save
-
-        redirect to "/users/#{user.slug}"
+        
+        redirect to "/users/#{@user.slug}"
     end
 
     delete '/users/:slug/delete' do #delete action
