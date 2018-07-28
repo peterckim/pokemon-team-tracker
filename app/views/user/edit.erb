@@ -11,7 +11,11 @@
         </form>
 
 
-         
+         <form method="POST" action="/users/<%=@user.slug%>/delete">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+
+          <input class="input-text" type="submit" value="Delete Account">
+        <form>
       </div>
   </div>
 </div>
