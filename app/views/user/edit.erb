@@ -1,6 +1,21 @@
 <a href="/users/<%=@user.slug%>"><img class="back-arrow" src="/images/back-arrow.png" /></a>
-<form method="post" action="/users/<%=@user.slug%>">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  Name<input type="text" value="<%=@user.name%>" name="users[name]">
-  <input type="submit" value="submit">
-</form>
+
+<div class="top-medium-spacing">
+  <div class="line-break">
+      <div class="top-medium-spacing">
+        <form method="post" action="/users/<%=@user.slug%>">
+          <input id="hidden" type="hidden" name="_method" value="patch">
+          Name:<br><input class="input-text" type="text" value="<%=@user.name%>" name="users[name]">
+          <br>
+          <input class="input-text" type="submit" value="Submit">
+        </form>
+
+
+        <form method="POST" action="/users/<%=@user.slug%>/delete">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+
+          <input class="input-text" type="submit" value="Delete Account">
+        <form>
+      </div>
+  </div>
+</div>

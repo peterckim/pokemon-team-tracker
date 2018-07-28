@@ -4,17 +4,17 @@
 <div class="line-break">
   <div class="top-medium-spacing">
     <% @pokemon.each do |p| %>
-        <a href="/pokemons/<%= p.slug %>"><h2><%= p.name %></h2></a>
+        <a class="team-title" href="/pokemons/<%= p.slug %>"><h2><%= p.name %></h2></a>
+        <div class="bottom-medium-spacing"></div>
     <% end %>
+  </div>
+</div>
+
+<div class="line-break">
+  <div class="top-medium-spacing">
 
     <a href="/pokemons/new"><button type="button" name="button" class="button"><h3>Add Pokemon</h3></button></a>
 
     <a href="/teams/<%=@team.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
-
-    <form method="POST" action="/teams/<%=@team.slug%>/delete">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-
-      <input type="submit" value="Delete">
-    <form>
   </div>
 </div>

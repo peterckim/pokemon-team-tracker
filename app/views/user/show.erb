@@ -1,4 +1,4 @@
-<h2 class="sub-title top-medium-spacing bottom-medium-spacing">Hello <%=@user.name%></h2>
+<h2 class="sub-title top-medium-spacing bottom-medium-spacing"><%=@user.name%></h2>
 
 <div class="line-break">
   <% @team.each do |t| %>
@@ -10,21 +10,16 @@
       <a class="team-title" href="/pokemons/<%=p.slug%>"><h3 class="pokemon-align"><%=p.name%></h3></a>
     <% end %>
   <% end %>
+  <div class="bottom-medium-spacing"></div>
+</div>
 
 
+<div class="line-break">
+  <div class="top-medium-spacing">
+      <a href="/teams/new"><button type="button" name="button" class="button"><h3>Add Team</h3></button></a>
 
-  <a href="/teams/new"><button type="button" name="button" class="button"><h3>Add Team</h3></button></a>
+      <a href="/users/<%=@user.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
 
-  <a href="/users/logout"><button type="button" name="button" class="button"><h3>Log Out</h3></button></a>
-
-  <a href="/users/<%=@user.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
-
-
-
-
-  <form method="POST" action="/users/<%=@user.slug%>/delete">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-
-    <input type="submit" value="Delete">
-  <form>
+      <a href="/users/logout"><button type="button" name="button" class="button"><h3>Log Out</h3></button></a>
+  </div>
 </div>

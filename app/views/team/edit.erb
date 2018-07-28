@@ -3,5 +3,11 @@
   <input id="hidden" type="hidden" name="_method" value="patch">
   Name<input type="text" value="<%=@team.name%>" name="teams[name]"><br>
   Size<input type="text" value="<%=@team.size%>" name="teams[size]"><br>
-  <input type="submit" value="submit">
+  <input type="submit" value="Submit">
 </form>
+
+<form method="POST" action="/teams/<%=@team.slug%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+
+  <input type="submit" value="Delete">
+<form>
