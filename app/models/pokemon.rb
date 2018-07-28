@@ -2,6 +2,7 @@ class Pokemon < ActiveRecord::Base
     belongs_to :team
     belongs_to :users
 
+    #slug
     def slug
         self.name.downcase.gsub(" ", "-")
     end
