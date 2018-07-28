@@ -12,13 +12,12 @@
     <h3 class="top-small-spacing">Special Attack: <%=@pokemon.special_attack%></h3>
     <h3 class="top-small-spacing">Special Defense: <%=@pokemon.special_defense%></h3>
     <h3 class="top-small-spacing">Speed: <%=@pokemon.speed%></h3>
+    <div class="bottom-medium-spacing"></div>
+  </div>
+</div>
 
+<div class="line-break">
+  <div class="top-medium-spacing">
     <a href="/pokemons/<%=@pokemon.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
-
-    <form method="POST" action="/pokemons/<%=@pokemon.slug%>/delete">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-
-      <input type="submit" value="Delete">
-    <form>
   </div>
 </div>

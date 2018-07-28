@@ -25,5 +25,11 @@
       Speed<br><input class="input-text" type="text" value="<%=@pokemon.speed%>" name="pokemons[speed]"><br>
       <input class="input-text" type="submit" value="Submit">
     </form>
+
+    <form method="POST" action="/pokemons/<%=@pokemon.slug%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+
+      <input type="submit" value="Delete">
+    <form>
   </div>
 </div
