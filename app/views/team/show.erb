@@ -4,7 +4,7 @@
 <div class="line-break">
   <div class="top-medium-spacing">
     <% @pokemon.each do |p| %>
-        <a class="team-title" href="/pokemons/<%= p.slug %>"><h2><%= p.name %></h2></a>
+        <a class="team-title" href="/pokemons/<%= p.slug %>"><h2 class="team-align"><%= p.name.titleize %></h2></a>
         <div class="bottom-medium-spacing"></div>
     <% end %>
   </div>

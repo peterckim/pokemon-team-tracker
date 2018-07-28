@@ -1,13 +1,17 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h2 class="sub-title top-medium-spacing bottom-medium-spacing"><%=@user.name%></h2>
 
 <div class="line-break">
   <% @team.each do |t| %>
     <div class="top-medium-spacing"></div>
-    <a class="team-title" href="/teams/<%=t.slug%>"><h2 class="align-left"><%=t.name%></h2></a>
+    <a class="team-title" href="/teams/<%=t.slug%>"><h2 class="team-align"><%=t.name%></h2></a>
     <div class="top-small-spacing">
     <% t.pokemons.each do |p| %>
       <div class="top-xsmall-spacing">
-      <a class="team-title" href="/pokemons/<%=p.slug%>"><h3 class="pokemon-align"><%=p.name%></h3></a>
+      <a class="team-title" href="/pokemons/<%=p.slug%>"><h3 class="pokemon-align"><%=p.name.titleize%></h3></a>
     <% end %>
   <% end %>
   <div class="bottom-medium-spacing"></div>

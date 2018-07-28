@@ -55,9 +55,14 @@
         text-align: left;
     }
 
-    .pokemon-align {
+    .team-align {
         text-align: left;
         padding-left: 50px;
+    }
+
+    .pokemon-align {
+        text-align: left;
+        padding-left: 100px;
     }
 
     .team-title {

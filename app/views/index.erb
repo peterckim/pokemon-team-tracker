@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <div class="align-center top-medium-spacing">
     <a href="/users/login"><button type="button" name="button" class="button"><h3>Log In</h3></button></a>
     <a href="/users/new"><button type="button" name="button" class="button left-spacing"><h3>Sign Up</h3></button></a>

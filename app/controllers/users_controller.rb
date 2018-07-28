@@ -1,4 +1,8 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+    use Rack::Flash
+
     get '/users' do
         @user = User.all
 
@@ -14,8 +18,10 @@ class UsersController < ApplicationController
         if @user && @user.authenticate(params[:users][:password])
             session[:user_id] = @user.id
             session[:user_slug] = @user.slug
+            flash[:message] = "Success"
             redirect to "/users/#{session[:user_slug]}"
         else
+            flash[:message] = "Incorrect Login Credentials"
             redirect to "/"
         end
     end
@@ -33,12 +39,14 @@ class UsersController < ApplicationController
     post '/users' do # handle signup
         # if username already exists
         if User.find_by(:username => params[:users][:username])
+            flash[:message] = "Username Already Exists."
             redirect to "/"
         # if username doesnt already exist, create it
         else
             @user = User.create(params[:users])
             session[:user_id] = @user.id
             session[:user_slug] = @user.slug
+            flash[:message] = "Success"
             redirect to "/users/#{@user.slug}"
         end
     end
@@ -47,8 +55,6 @@ class UsersController < ApplicationController
     get '/users/:slug' do
         @user = User.find_by_slug(params[:slug])
         @team = Team.where(:user_id => @user.id)
-
-        # binding.pry
 
         erb :'user/show'
     end

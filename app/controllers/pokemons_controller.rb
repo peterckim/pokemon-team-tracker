@@ -3,6 +3,7 @@ class PokemonsController < ApplicationController
         erb :'pokemon/new'
     end
 
+    # Instead of Going to pokemon page right away, go back to create pokemon until @team.size is filled.
     post '/pokemons' do
         @pokemon = Pokemon.create(params[:pokemons])
         @pokemon.team_id = session[:team_id]
@@ -14,7 +15,6 @@ class PokemonsController < ApplicationController
 
     get '/pokemons/:slug' do
         @pokemon = Pokemon.find_by_slug(params[:slug])
-        
 
         erb :'pokemon/show'
     end
