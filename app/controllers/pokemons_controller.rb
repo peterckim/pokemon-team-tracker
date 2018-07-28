@@ -1,16 +1,25 @@
+require 'rack-flash'
+
 class PokemonsController < ApplicationController
+    use Rack::Flash
+
     get '/pokemons/new' do
         erb :'pokemon/new'
     end
 
-    # Instead of Going to pokemon page right away, go back to create pokemon until @team.size is filled.
+    # Instead of going to pokemon page right away, go back to create pokemon until @team.size is filled.
     post '/pokemons' do
         @pokemon = Pokemon.create(params[:pokemons])
         @pokemon.team_id = session[:team_id]
         @pokemon.assign_image
         @pokemon.save
 
-        redirect to "/pokemons/#{@pokemon.slug}"
+        if @pokemon.team.size > @pokemon.team.pokemons.length
+            flash[:message] = "Created #{@pokemon.name}"
+            redirect to "/pokemons/new"
+        else
+            redirect to "/teams/#{@pokemon.team.slug}"
+        end
     end
 
     get '/pokemons/:slug' do

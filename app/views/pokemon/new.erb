@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <a href="/teams/<%=session[:team_slug]%>"><img class="back-arrow" src="/images/back-arrow.png" /></a>
 
 <h2 class="sub-title top-medium-spacing bottom-medium-spacing">New Pokemon</h2>
@@ -10,7 +14,7 @@
             <input class="input-text" type="text" name="pokemons[name]" id="name" />
             <br>
             <div class="top-small-spacing"></div>
-            <label for="element">Element:</label>
+            <label for="element">Type:</label>
             <br>
             <input class="input-text" type="text" name="pokemons[element]" id="element" />
             <br>

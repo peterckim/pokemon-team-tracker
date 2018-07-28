@@ -1,13 +1,20 @@
 <a href="/teams/<%=@team.slug%>"><img class="back-arrow" src="/images/back-arrow.png" /></a>
-<form method="post" action="/teams/<%=@team.slug%>">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  Name<input type="text" value="<%=@team.name%>" name="teams[name]"><br>
-  Size<input type="text" value="<%=@team.size%>" name="teams[size]"><br>
-  <input type="submit" value="Submit">
-</form>
 
-<form method="POST" action="/teams/<%=@team.slug%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
+<div class="top-medium-spacing">
+  <div class="line-break">
+    <form method="post" action="/teams/<%=@team.slug%>">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <div class="top-medium-spacing"></div>
+      Name:<br><input class="input-text" type="text" value="<%=@team.name%>" name="teams[name]"><br>
+      <div class="top-small-spacing">
+      Size:<br><input class="input-text" type="text" value="<%=@team.size%>" name="teams[size]"><br>
+      <input class="input-text" type="submit" value="Submit">
+    </form>
 
-  <input type="submit" value="Delete">
-<form>
+    <form method="POST" action="/teams/<%=@team.slug%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+
+      <input class="input-text" type="submit" value="Delete">
+    <form>
+  </div>
+</div>
