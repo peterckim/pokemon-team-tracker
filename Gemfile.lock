@@ -7,16 +7,15 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    activemodel (4.2.5)
-      activesupport (= 4.2.5)
+    activemodel (4.2.10)
+      activesupport (= 4.2.10)
       builder (~> 3.1)
-    activerecord (4.2.5)
-      activemodel (= 4.2.5)
-      activesupport (= 4.2.5)
+    activerecord (4.2.10)
+      activemodel (= 4.2.10)
+      activesupport (= 4.2.10)
       arel (~> 6.0)
-    activesupport (4.2.5)
+    activesupport (4.2.10)
       i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
@@ -40,7 +39,6 @@ GEM
     eventmachine (1.2.7)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    json (1.8.6)
     method_source (0.8.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
@@ -48,12 +46,11 @@ GEM
     mustermann (1.0.2)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-nav (0.2.4)
-      pry (>= 0.9.10, < 0.11.0)
     public_suffix (3.0.2)
     rack (2.0.5)
     rack-flash3 (1.0.5)
@@ -117,12 +114,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (= 4.2.5)
+  activerecord (~> 4.2, >= 4.2.6)
   bcrypt
   capybara
   database_cleaner!
+  pg (= 0.20)
   pry
-  pry-nav
   rack-flash3
   rack-test
   rake
