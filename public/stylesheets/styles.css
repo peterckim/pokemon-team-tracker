@@ -31,6 +31,7 @@
         max-width: 960px;
         padding: 2.25%; /* 18px / 800px */
         width: 85%;
+        position: relative;
     }
 
     .title {
@@ -111,8 +112,8 @@
 
     .back-arrow {
         position: absolute;
-        left: 220px;
-        top: 20px;
+        top: 0px;
+        left: 5px;
         background: url("../images/back-arrow.png") no-repeat center center;
         height: 50px;
         width: 50px;
