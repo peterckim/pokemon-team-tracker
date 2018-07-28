@@ -1,3 +1,4 @@
+<a href="/users/<%=@user.slug%>"><img class="back-arrow" src="/images/back-arrow.png" /></a>
 <form method="post" action="/users/<%=@user.slug%>">
   <input id="hidden" type="hidden" name="_method" value="patch">
   Name<input type="text" value="<%=@user.name%>" name="users[name]">

@@ -100,12 +100,17 @@
         margin: 5px auto;
     }
 
-    .team-title:first-child {
-        padding-top: 20px;
-    }
-
     .left-spacing {
         margin-left: 10px;
+    }
+
+    .back-arrow {
+        position: absolute;
+        left: 220px;
+        top: 20px;
+        background: url("../images/back-arrow.png") no-repeat center center;
+        height: 50px;
+        width: 50px;
     }
 
 }

@@ -14,6 +14,7 @@ class PokemonsController < ApplicationController
 
     get '/pokemons/:slug' do
         @pokemon = Pokemon.find_by_slug(params[:slug])
+        
 
         erb :'pokemon/show'
     end
