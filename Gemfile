@@ -9,7 +9,7 @@ gem 'require_all'
 gem 'thin'
 gem 'bcrypt'
 gem 'rack-flash3'
-gem 'dotenv-rails'
+gem 'dotenv'
 
 group :development do
   gem 'sqlite3'
