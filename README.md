@@ -9,5 +9,5 @@ To run this on your local machine, run `bundle install` to install the gems requ
 
 ## License
 
-This application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT)
+This application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
