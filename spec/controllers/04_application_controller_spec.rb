@@ -21,8 +21,8 @@ describe ApplicationController do
     it 'signup directs user to user index' do
       params = {
         :users => {
+            :name => "test",
             :username => "test",
-            :email => "test@test.com",
             :password => "test"
         }
       }
@@ -74,21 +74,23 @@ describe ApplicationController do
 
   describe "login" do
     it 'loads the login page' do
-      get '/login'
+      get '/users/login'
       expect(last_response.status).to eq(200)
     end
 
-    it 'loads the tweets index after login' do
-      user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
+    it 'loads the users index after login' do
+      user = User.create(:name => "name", :username => "username", :password => "password")
       params = {
-        :username => "becky567",
-        :password => "kittens"
+        :users => {
+            :username => "username",
+            :password => "password"
+        }
       }
-      post '/login', params
+      post '/users/login', params
       expect(last_response.status).to eq(302)
       follow_redirect!
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Welcome,")
+      expect(last_response.body).to include("#{user.name}")
     end
 
     it 'does not let user view login page if already logged in' do
@@ -105,15 +107,17 @@ describe ApplicationController do
 
   describe "logout" do
     it "lets a user logout if they are already logged in" do
-      user = User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
+      user = User.create(:username => "username", :name => "name", :password => "password")
 
       params = {
-        :username => "becky567",
-        :password => "kittens"
+        :users => {
+            :username => "username",
+            :password => "password"
+        }
       }
-      post '/login', params
-      get '/logout'
-      expect(last_response.location).to include("/login")
+      post '/users/login', params
+      get '/users/logout'
+      expect(last_response.location).to include("/")
     end
 
     it 'does not let a user logout if not logged in' do
