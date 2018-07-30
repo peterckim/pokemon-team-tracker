@@ -1,12 +1,20 @@
+<div class="user-container">
 <% @users.each do |user| %>
-    <h2><%= user.name %></h2>
+    <h2 class="align-left"><%= user.username %></h2>
+    <div class="team-container">
     <% user.teams.each do |team| %>
         <h3><%= team.name %></h3>
         <br>
+        <div class="pokemon-container">
         <% team.pokemons.each do |pokemon| %>
-            <p><%= pokemon.name %></p>
-            <br>
-            <img src="/images/<%= pokemon.image %>" height="94px" width="101px"/>
+            <div class="pokemon-card">
+                <a href="/pokemons/<%= pokemon.slug %>"><p><%= pokemon.name %></p></a>
+                <br>
+                <a href="/pokemons/<%= pokemon.slug %>"><img src="/images/<%= pokemon.image %>" height="94px" width="101px"/></a>
+            </div>
         <% end %>
+        </div>
     <% end %>
+    </div>
 <% end %>
+</div>

@@ -1,6 +1,7 @@
 class Pokemon < ActiveRecord::Base
+    has_many :comments, dependent: :destroy
     belongs_to :team
-    belongs_to :users
+    belongs_to :user
 
     #slug
     def slug

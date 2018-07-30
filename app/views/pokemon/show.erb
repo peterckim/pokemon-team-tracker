@@ -17,8 +17,34 @@
   </div>
 </div>
 
-<div class="line-break">
-  <div class="top-medium-spacing">
-    <a href="/pokemons/<%=@pokemon.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
+<div class="line-break"></div>
+<div class="top-small-spacing"></div>
+<p class="align-left">Comments</p>
+
+<% @pokemon.comments.each do |comment| %>
+  <p><%= comment.content %></p>
+  <p><%= comment.created_at %></p>
+  <p><%= comment.user.username %></p>
+  <% if comment.user.id == session[:user_id] %>
+    <a href="/comments/<%=comment.id%>/edit"><p>edit</p></a>
+  <% end %>
+<% end %>
+
+
+<form action="/comments" method="POST">
+  <input class="input-text" type="textarea" name="comments[content]" /><br>
+  <input type="hidden" name="comments[pokemon_id]" value="<%=@pokemon.id%>" /> 
+  <input type="submit" name="Submit" />
+</form>
+
+
+<!-- @pokemon.user is returning nil -->
+<% if @pokemon.team.user.id == session[:user_id] %>
+  <div class="line-break">
+    <div class="top-medium-spacing">
+
+    <!-- if the owner of the pokemon, show edit button, if not don't -->
+      <a href="/pokemons/<%=@pokemon.slug%>/edit"><button type="button" name="button" class="button"><h3>Edit</h3></button></a>
+    </div>
   </div>
-</div>
+<% end %>

@@ -23,3 +23,6 @@ use TeamsController
 use Rack::MethodOverride
 use PokemonsController
 
+use Rack::MethodOverride
+use CommentsController
+

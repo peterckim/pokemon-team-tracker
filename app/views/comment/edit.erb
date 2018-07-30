@@ -1,0 +1,6 @@
+<form method="post" action="/comments/<%=@comment.id%>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <div class="top-medium-spacing"></div>
+    <input class="input-text" type="text-area" value="<%=@comment.content%>" name="comments[content]"><br>
+    <input class="input-text" type="submit" value="Submit">
+</form>

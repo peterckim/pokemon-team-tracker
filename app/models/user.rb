@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
     has_secure_password
     has_many :teams, dependent: :destroy
+    has_many :comments, dependent: :destroy
     has_many :pokemons, through: :teams, dependent: :destroy
 
     def slug
