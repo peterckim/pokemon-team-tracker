@@ -1,0 +1,12 @@
+<% @users.each do |user| %>
+    <h2><%= user.name %></h2>
+    <% user.teams.each do |team| %>
+        <h3><%= team.name %></h3>
+        <br>
+        <% team.pokemons.each do |pokemon| %>
+            <p><%= pokemon.name %></p>
+            <br>
+            <img src="/images/<%= pokemon.image %>" height="94px" width="101px"/>
+        <% end %>
+    <% end %>
+<% end %>

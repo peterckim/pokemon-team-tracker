@@ -3,6 +3,12 @@ require 'rack-flash'
 class PokemonsController < ApplicationController
     use Rack::Flash
 
+    get '/pokemons' do
+        @users = User.all
+
+        erb :'pokemon/index'
+    end
+
     get '/pokemons/new' do
         erb :'pokemon/new'
     end
