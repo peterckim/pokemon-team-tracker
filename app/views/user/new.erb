@@ -1,5 +1,9 @@
 <h2 class="sub-title top-medium-spacing bottom-medium-spacing">Sign Up</h2>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <div class="line-break">
     <div class="top-medium-spacing">
         <form action="/users" method="POST">

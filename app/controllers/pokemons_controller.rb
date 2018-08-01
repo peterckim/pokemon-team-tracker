@@ -53,6 +53,7 @@ class PokemonsController < ApplicationController
         @pokemon = Pokemon.find_by_slug(params[:slug])
         @pokemon.destroy
         
-        redirect to "/teams/#{session[:team_slug]}"
+
+        redirect to "/users/#{session[:user_slug]}"
     end
 end

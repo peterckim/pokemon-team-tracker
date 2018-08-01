@@ -1,4 +1,4 @@
-<a href="/teams/<%=@pokemon.team.slug%>"><img class="back-arrow" src="/images/back-arrow.png" /></a>
+<a href="/users/<%=session[:user_slug]%>"><img class="back-arrow" src="/images/back-arrow.png" /></a>
 <h2 class="sub-title top-medium-spacing bottom-medium-spacing"><%=@pokemon.name.titleize%></h2>
 <img src="/images/<%=@pokemon.image%>" alt="<%=@pokemon.name%>" height="189px" width="203px" /> <!-- Move assign_image to controller -->
 <div class="top-small-spacing"></div>

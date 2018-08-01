@@ -38,16 +38,21 @@ class UsersController < ApplicationController
 
     post '/users' do # handle signup
         # if username already exists
-        if User.find_by(:username => params[:users][:username])
-            flash[:message] = "Username Already Exists."
-            redirect to "/"
-        # if username doesnt already exist, create it
+        if params[:users][:username] == "" || params[:users][:name] == "" || params[:users][:password] == ""
+            flash[:message] = "A field is empty."
+            redirect to "/users/new"
         else
-            @user = User.create(params[:users])
-            session[:user_id] = @user.id
-            session[:user_slug] = @user.slug
-            flash[:message] = "Success"
-            redirect to "/users/#{@user.slug}"
+            if User.find_by(:username => params[:users][:username])
+                flash[:message] = "Username Already Exists."
+                redirect to "/"
+            # if username doesnt already exist, create it
+            else
+                @user = User.create(params[:users])
+                session[:user_id] = @user.id
+                session[:user_slug] = @user.slug
+                flash[:message] = "Success"
+                redirect to "/users/#{@user.slug}"
+            end
         end
     end
 

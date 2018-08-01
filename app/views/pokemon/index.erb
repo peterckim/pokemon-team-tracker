@@ -1,17 +1,23 @@
+<a href="/users/<%=session[:user_slug]%>"><img class="back-arrow" src="/images/back-arrow.png" /></a>
 <div class="user-container">
 <% @users.each do |user| %>
-    <h2 class="align-left"><%= user.username %></h2>
+    <h2 class="align-left clear-sides top-medium-spacing"><%= user.username %></h2>
     <div class="team-container">
     <% user.teams.each do |team| %>
-        <h3><%= team.name %></h3>
         <br>
-        <div class="pokemon-container">
+        <h3 class="clear-sides top-small-spacing"><%= team.name %></h3>
+        <br>
+        <div class="pokemon-container clear-sides">
         <% team.pokemons.each do |pokemon| %>
-            <div class="pokemon-card">
-                <a href="/pokemons/<%= pokemon.slug %>"><p><%= pokemon.name %></p></a>
+            <a href="/pokemons/<%= pokemon.slug %>"><div class="pokemon-card">
+                <div class="pokemon-name">
+                    <p><%= pokemon.name %></p>
+                </div>
                 <br>
-                <a href="/pokemons/<%= pokemon.slug %>"><img src="/images/<%= pokemon.image %>" height="94px" width="101px"/></a>
-            </div>
+                <div class="pokemon-image">
+                    <img src="/images/<%= pokemon.image %>" height="125px" width="135px"/>
+                </div>
+            </div></a>
         <% end %>
         </div>
     <% end %>

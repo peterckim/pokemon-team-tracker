@@ -2,6 +2,10 @@
 
 <h2 class="sub-title top-medium-spacing bottom-medium-spacing">New Team</h2>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <div class="line-break">
     <div class="top-medium-spacing">
         <form action="/teams" method="POST">

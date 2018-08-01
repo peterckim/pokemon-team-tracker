@@ -1,13 +1,22 @@
+require 'rack-flash'
+
 class TeamsController < ApplicationController
+    use Rack::Flash
+
     get '/teams/new' do
 
         erb :'team/new'
     end
 
     post '/teams' do
-        @team = Team.create(:name => params[:teams][:name], :size => params[:teams][:size], :user_id => session[:user_id])
-        
-        redirect to "/teams/#{@team.slug}"
+        if params[:teams][:name] == "" || params[:teams][:size] == ""
+            flash[:message] = "A field is empty."
+            redirect to '/teams/new'
+        else
+            @team = Team.create(:name => params[:teams][:name], :size => params[:teams][:size], :user_id => session[:user_id])
+            
+            redirect to "/teams/#{@team.slug}"
+        end
     end
 
     get '/teams/:slug' do
