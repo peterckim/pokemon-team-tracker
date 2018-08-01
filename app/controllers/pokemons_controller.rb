@@ -4,13 +4,22 @@ class PokemonsController < ApplicationController
     use Rack::Flash
 
     get '/pokemons' do
-        @users = User.all
+        if session[:user_id]
+            @users = User.all
 
-        erb :'pokemon/index'
+            erb :'pokemon/index'
+        else
+            redirect to '/'
+        end
     end
 
     get '/pokemons/new' do
-        erb :'pokemon/new'
+        if session[:user_id]
+
+            erb :'pokemon/new'
+        else
+            redirect to '/'
+        end
     end
 
     # Instead of going to pokemon page right away, go back to create pokemon until @team.size is filled.
@@ -29,15 +38,23 @@ class PokemonsController < ApplicationController
     end
 
     get '/pokemons/:slug' do
-        @pokemon = Pokemon.find_by_slug(params[:slug])
+        if session[:user_id]
+            @pokemon = Pokemon.find_by_slug(params[:slug])
 
-        erb :'pokemon/show'
+            erb :'pokemon/show'
+        else
+            redirect to '/'
+        end
     end
 
     get '/pokemons/:slug/edit' do
-        @pokemon = Pokemon.find_by_slug(params[:slug])
+        if session[:user_id]
+            @pokemon = Pokemon.find_by_slug(params[:slug])
 
-        erb :'pokemon/edit'
+            erb :'pokemon/edit'
+        else
+            redirect to '/'
+        end
     end
 
     patch '/pokemons/:slug' do

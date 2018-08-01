@@ -4,9 +4,13 @@ class UsersController < ApplicationController
     use Rack::Flash
 
     get '/users' do
-        @user = User.all
+        if session[:user_id]
+            @user = User.all
 
-        erb :'user/index'
+            erb :'user/index'
+        else
+            redirect to '/'
+        end
     end
 
     get '/users/login' do # load login form
@@ -27,8 +31,10 @@ class UsersController < ApplicationController
     end
 
     get '/users/logout' do #logout action
-        session.clear
-
+        if session[:user_id]
+            session.clear
+        end
+        
         redirect to "/"
     end
 
@@ -58,16 +64,24 @@ class UsersController < ApplicationController
 
     # use slugs
     get '/users/:slug' do
-        @user = User.find_by_slug(params[:slug])
-        @team = Team.where(:user_id => @user.id)
+        if session[:user_id]
+            @user = User.find_by_slug(params[:slug])
+            @team = Team.where(:user_id => @user.id)
 
-        erb :'user/show'
+            erb :'user/show'
+        else
+            redirect to '/'
+        end
     end
 
     get '/users/:slug/edit' do #load edit form
-        @user = User.find_by_slug(params[:slug])
-        
-        erb :'user/edit'
+        if session[:user_id]
+            @user = User.find_by_slug(params[:slug])
+            
+            erb :'user/edit'
+        else
+            redirect to '/'
+        end
     end
 
     patch '/users/:slug' do #edit action

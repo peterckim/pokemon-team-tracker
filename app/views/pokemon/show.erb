@@ -22,11 +22,10 @@
 <p class="align-left">Comments</p>
 
 <% @pokemon.comments.each do |comment| %>
-  <p><%= comment.content %></p>
-  <p><%= comment.created_at %></p>
-  <p><%= comment.user.username %></p>
+  <p class="comment-style"><%= comment.user.username %>: <%= comment.content %></p>
+  <p class="date-style"><%= comment.created_at %></p>
   <% if comment.user.id == session[:user_id] %>
-    <a href="/comments/<%=comment.id%>/edit"><p>edit</p></a>
+    <a href="/comments/<%=comment.id%>/edit"><button type="button" name="button" class="pokemon-edit-button"><p>edit</p></button></a>
   <% end %>
 <% end %>
 

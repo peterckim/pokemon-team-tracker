@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
     get '/comments/new' do
+        if session[:user_id]
 
-        erb :'comment/new'
+            erb :'comment/new'
+        else
+            redirect to '/'
+        end
     end
 
     post '/comments' do
@@ -13,19 +17,14 @@ class CommentsController < ApplicationController
         redirect to "/pokemons/#{@comment.pokemon.slug}"
     end
 
-    get '/teams/:slug' do
-        @team = Team.find_by_slug(params[:slug])
-        session[:team_slug] = params[:slug]
-        session[:team_id] = @team.id
-        @pokemon = Pokemon.where(:team_id => session[:team_id])
-
-        erb :'team/show'
-    end
-
     get '/comments/:id/edit' do
-        @comment = Comment.find(params[:id])
+        if session[:user_id]
+            @comment = Comment.find(params[:id])
 
-        erb :'comment/edit'
+            erb :'comment/edit'
+        else
+            redirect to '/'
+        end
     end
 
     patch '/comments/:id' do
@@ -34,12 +33,5 @@ class CommentsController < ApplicationController
         @comment.save
 
         redirect to "/pokemons/#{@comment.pokemon.slug}"
-    end
-
-    delete '/teams/:slug/delete' do #delete action
-        @team = Team.find_by_slug(params[:slug])
-        @team.destroy
-        
-        redirect to "/users/#{session[:user_slug]}"
     end
 end

@@ -4,8 +4,12 @@ class TeamsController < ApplicationController
     use Rack::Flash
 
     get '/teams/new' do
+        if session[:user_id]
 
-        erb :'team/new'
+            erb :'team/new'
+        else
+            redirect to '/'
+        end
     end
 
     post '/teams' do
@@ -20,18 +24,26 @@ class TeamsController < ApplicationController
     end
 
     get '/teams/:slug' do
-        @team = Team.find_by_slug(params[:slug])
-        session[:team_slug] = params[:slug]
-        session[:team_id] = @team.id
-        @pokemon = Pokemon.where(:team_id => session[:team_id])
+        if session[:user_id]
+            @team = Team.find_by_slug(params[:slug])
+            session[:team_slug] = params[:slug]
+            session[:team_id] = @team.id
+            @pokemon = Pokemon.where(:team_id => session[:team_id])
 
-        erb :'team/show'
+            erb :'team/show'
+        else
+            redirect to '/'
+        end
     end
 
     get '/teams/:slug/edit' do
-        @team = Team.find_by_slug(params[:slug])
+        if session[:user_id]
+            @team = Team.find_by_slug(params[:slug])
 
-        erb :'team/edit'
+            erb :'team/edit'
+        else
+            redirect to '/'
+        end
     end
 
     patch '/teams/:slug' do
