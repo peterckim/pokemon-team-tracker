@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
-    get '/comments/new' do
-        if session[:user_id]
 
-            erb :'comment/new'
-        else
-            redirect to '/'
-        end
+    before '/comments*' do
+        authenticate_user
+    end
+
+    get '/comments/new' do
+
+        erb :'comment/new'
     end
 
     post '/comments' do
@@ -18,13 +19,9 @@ class CommentsController < ApplicationController
     end
 
     get '/comments/:id/edit' do
-        if session[:user_id]
-            @comment = Comment.find(params[:id])
+        @comment = Comment.find(params[:id])
 
-            erb :'comment/edit'
-        else
-            redirect to '/'
-        end
+        erb :'comment/edit'
     end
 
     patch '/comments/:id' do

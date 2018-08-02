@@ -3,16 +3,17 @@ require 'rack-flash'
 class TeamsController < ApplicationController
     use Rack::Flash
 
-    get '/teams/new' do
-        if session[:user_id]
+    before "/teams*" do 
+        authenticate_user
+    end
 
-            erb :'team/new'
-        else
-            redirect to '/'
-        end
+    get '/teams/new' do
+
+        erb :'team/new'
     end
 
     post '/teams' do
+        
         if params[:teams][:name] == "" || params[:teams][:size] == ""
             flash[:message] = "A field is empty."
             redirect to '/teams/new'
@@ -24,26 +25,18 @@ class TeamsController < ApplicationController
     end
 
     get '/teams/:slug' do
-        if session[:user_id]
-            @team = Team.find_by_slug(params[:slug])
-            session[:team_slug] = params[:slug]
-            session[:team_id] = @team.id
-            @pokemon = Pokemon.where(:team_id => session[:team_id])
+        @team = Team.find_by_slug(params[:slug])
+        session[:team_slug] = params[:slug]
+        session[:team_id] = @team.id
+        @pokemon = Pokemon.where(:team_id => session[:team_id])
 
-            erb :'team/show'
-        else
-            redirect to '/'
-        end
+        erb :'team/show'
     end
 
     get '/teams/:slug/edit' do
-        if session[:user_id]
-            @team = Team.find_by_slug(params[:slug])
+        @team = Team.find_by_slug(params[:slug])
 
-            erb :'team/edit'
-        else
-            redirect to '/'
-        end
+        erb :'team/edit'
     end
 
     patch '/teams/:slug' do
